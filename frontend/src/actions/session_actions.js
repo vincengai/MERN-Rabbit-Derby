@@ -1,5 +1,5 @@
-import * as SessionAPIUtil from "../util/session_api_util";
 import jwt_decode from "jwt-decode";
+import * as SessionAPIUtil from "../util/session_api_util";
 
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
@@ -65,5 +65,5 @@ export const logout = () => dispatch => {
   // 2. Remove the token from the common axios header
   SessionAPIUtil.setAuthToken(false);
   // 3. Dispatch a logout action
-  dispatch(logoutUser());
+  dispatch(receiveUserLogout());
 };

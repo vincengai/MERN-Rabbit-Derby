@@ -9,7 +9,7 @@ import * as SessionActions from "./actions/session_actions";
 document.addEventListener("DOMContentLoaded", () => {
   let store;
   
-  // If a returning user has a session token stored in localStorage
+  // Check if a returning user has a session token stored in localStorage
   if (localStorage.jwtToken) {
 
     // Set the token as a common header for all axios requests
@@ -37,11 +37,11 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "/login";
     } else {
       // If this is a first time user, start with an empty store
-      store = configureStore({});
+      store = configureStore();
     }
 
     // Render our root component and pass in the store as a prop
     const root = document.getElementById("root");
-    ReactDOM.render(<Root store={store} />, root);
+    ReactDOM.render(<Root store={ store } />, root);
   }
 });

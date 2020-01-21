@@ -60,6 +60,7 @@ class SignupForm extends React.Component {
             <br />
             <input type="submit" value="Submit" />
           </div>
+          { this.renderErrors() }
         </form>
       </div>
     );

@@ -6,7 +6,7 @@ export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_USER_LOGIN = "RECEIVE_USER_LOGIN";
 export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
 
-// Action Creators
+// Dispatched on user login
 const receiveCurrentUser = currentUser => {
   return {
     type: RECEIVE_CURRENT_USER,
@@ -14,18 +14,21 @@ const receiveCurrentUser = currentUser => {
   };
 };
 
+// Dispatched on user signup to redirect to the login page
 const receiveUserLogin = () => {
   return {
     type: RECEIVE_USER_LOGIN
   };
 };
 
+// Dispatched on user logout
 const receiveUserLogout = () => {
   return {
     type: RECEIVE_USER_LOGOUT
   };
 };
 
+// Dispatched to show authentication errors
 const receiveErrors = errors => {
   return {
     type: RECEIVE_SESSION_ERRORS,

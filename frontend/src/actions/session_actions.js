@@ -64,6 +64,6 @@ export const logout = () => dispatch => {
   localStorage.removeItem("jwtToken");
   // 2. Remove the token from the common axios header
   SessionAPIUtil.setAuthToken(false);
-  // 3. Dispatch a logout action
+  // 3. Dispatch a logout action to update the store
   dispatch(receiveUserLogout());
 };

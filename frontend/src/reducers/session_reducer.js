@@ -2,28 +2,24 @@ import * as SessionActions from "../actions/session_actions";
 
 const _defaultState = {
   isAuthenticated: false,
-  user: {}
+  user: undefined
 };
 
 const sessionReducer = (oldState = _defaultState, action) => {
   Object.freeze(oldState);
+  let nextState = Object.assign({}, oldState);
   switch (action.type) {
     case SessionActions.RECEIVE_CURRENT_USER:
-      return {
-        ...oldState,
-        isAuthenticated: !!action.currentUser,
-        user: action.currentUser
-      };
+      nextState["isAuthenticated"] = !!action.currentUser;
+      nextState["user"] = action.currentUser;
+      return nextState;
     case SessionActions.RECEIVE_USER_LOGIN:
-      return {
-        ...oldState,
-        isSignedIn: true
-      };
+      nextState["isSignedIn"] = true;
+      return nextState;
     case SessionActions.RECEIVE_USER_LOGOUT:
-      return {
-        isAuthenticated: false,
-        user: undefined
-      };
+      nextState["isAuthenticated"] = false;
+      nextState["user"] = undefined;
+      return nextState;
     default:
       return oldState;
   }

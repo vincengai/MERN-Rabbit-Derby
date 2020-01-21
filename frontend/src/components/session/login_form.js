@@ -6,9 +6,10 @@ class LoginForm extends React.Component {
     super(props);
     this.state = {
       username: "",
-      password: "",
+      password: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
   }
 
   update(field) {
@@ -17,6 +18,25 @@ class LoginForm extends React.Component {
         [field]: event.currentTarget.value
       });
     };
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.login(this.state);
+  }
+
+  renderErrors() {
+    return (
+      <ul>
+        {
+          this.props.errors.map((error, idx) => {
+            return (
+              <li key={ `error-${ idx }` }>{ error }</li>
+            );
+          })
+        }
+      </ul>
+    );
   }
 
   render() {
@@ -35,6 +55,7 @@ class LoginForm extends React.Component {
               value={ this.state.password }
               onChange={ this.update("password") }
               placeholder="Password" />
+            <br />
             <input type="submit" value="Submit" />
           </div>
         </form>

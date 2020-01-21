@@ -1,14 +1,14 @@
 import * as SessionActions from "../actions/session_actions";
 
-const _defaultState = [];
+const _nullErrors = [];
 
-const sessionErrorsReducer = (oldState = _defaultState, action) => {
+const sessionErrorsReducer = (oldState = _nullErrors, action) => {
   Object.freeze(oldState);
   switch(action.type) {
     case SessionActions.RECEIVE_SESSION_ERRORS:
       return action.errors;
     case SessionActions.RECEIVE_CURRENT_USER:
-      return _defaultState;
+      return _nullErrors;
     default:
       return oldState;
   }

@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Render our root component and pass in the store as a prop
     const root = document.getElementById("root");
-    ReactDOM.render(<Root store={ store } />, root);
+    // ReactDOM.render(<Root store={ store } />, root);
+    ReactDOM.render(<h1>Argh</h1>, root);
   }
 });

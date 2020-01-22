@@ -43,23 +43,23 @@
  }
 
  .btn.login {
-  color: #0079d3;
+  color: rgba(255, 107, 107, 1);
   background-color: white;
-  border: 1px solid #0079d3;
+  border: 1px solid rgba(242, 220, 111, 1);
  }
 
  .btn.signup {
-   color: white;
-   background-color: #0079d3;
+   color: rgba(255, 107, 107, 1);
+   background-color: rgba(242, 220, 111, 1);
  }
 
  .btn.login:hover {
    color: rgba(0,121,211,0.5);
-   border: 1px solid rgba(0,121,211,0.7);
+   border: 1px solid rgba(242, 220, 111, 1);
  }
 
  .btn.signup:hover{
-   background-color:rgba(0,121,211,0.5);
+   background-color: rgba(242, 220, 111, 1);
  }
 
  .btn {

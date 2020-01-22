@@ -58,9 +58,7 @@ function spriteAnimation() {
 
 
     return(
-      <div>
         <canvas width="300" height="200"></canvas>
-      </div>
     )
   }
 

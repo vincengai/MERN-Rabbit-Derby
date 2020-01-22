@@ -15,9 +15,10 @@ const receiveCurrentUser = currentUser => {
 };
 
 // Dispatched on user signup to redirect to the login page
-const receiveUserLogin = () => {
+const receiveUserLogin = (user) => {
   return {
-    type: RECEIVE_USER_LOGIN
+    type: RECEIVE_USER_LOGIN,
+    user
   };
 };
 

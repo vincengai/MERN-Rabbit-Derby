@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Dropdown from './dropdown';
+import Dropdown from "./dropdown";
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -34,14 +34,15 @@ class NavBar extends React.Component {
   render() {
     return (
       // <div>
-       
+      // currentUser = { this.props.currentUser } logout = {
+      //   this.props.logout
       //   { this.getLinks() }
       // </div>
       <div>
         <div className="header">
       {
-        this.props.currentUser ? (
-          <Dropdown currentUser={this.props.currentUser} logout={this.props.logout} />
+        this.props.loggedIn ? (
+          <Dropdown />
         ) : (
             <div className='top-buttons'>
               <button className="btn login" onClick={() => this.props.openModal('login')}>Log in</button>
@@ -49,7 +50,7 @@ class NavBar extends React.Component {
             </div>
           )
       }
-      <div className="temp"></div>
+      {/* <div className="temp"></div> */}
         </div>
         </div >
 

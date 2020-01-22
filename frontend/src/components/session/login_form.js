@@ -22,7 +22,8 @@ class LoginForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.login(this.state);
+    this.props.login(this.state)
+      .then(this.props.closeModal());
   }
 
   renderErrors() {

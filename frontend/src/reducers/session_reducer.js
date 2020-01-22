@@ -13,11 +13,11 @@ const sessionReducer = (oldState = _defaultState, action) => {
       nextState["isAuthenticated"] = !!action.currentUser;
       nextState["user"] = action.currentUser;
       return nextState;
-    case SessionActions.RECEIVE_USER_LOGIN:
-      nextState["user"] = action.data;
-      nextState["isAuthenticated"] = true;
-      nextState["isSignedIn"] = true;
-      return nextState;
+    // case SessionActions.RECEIVE_USER_LOGIN:
+    //   nextState["user"] = action.data;
+    //   nextState["isAuthenticated"] = true;
+    //   nextState["isSignedIn"] = true;
+    //   return nextState;
     case SessionActions.RECEIVE_USER_LOGOUT:
       nextState["isAuthenticated"] = false;
       nextState["user"] = undefined;

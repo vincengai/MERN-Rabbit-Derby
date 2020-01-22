@@ -15,9 +15,10 @@ const receiveCurrentUser = currentUser => {
 };
 
 // Dispatched on user signup to redirect to the login page
-const receiveUserLogin = () => {
+const receiveUserLogin = data => {
   return {
-    type: RECEIVE_USER_LOGIN
+    type: RECEIVE_USER_LOGIN,
+    data
   };
 };
 
@@ -40,7 +41,7 @@ export const signup = user => dispatch => {
   return (
     SessionAPIUtil.signup(user)
       .then(
-        () => dispatch(receiveUserLogin()),
+        () => dispatch(login(user)),
         error => dispatch(receiveErrors(error.response.data))
       )
   );

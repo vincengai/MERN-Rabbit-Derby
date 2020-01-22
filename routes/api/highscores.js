@@ -20,7 +20,6 @@ router.get('/user/:user_id', (req, res) => {
             res.status(404).json({ nohighscoresfound: 'No highscores found from this user'}
             )
         )
-    
 });
 
 router.get('/:id', (req, res) => {

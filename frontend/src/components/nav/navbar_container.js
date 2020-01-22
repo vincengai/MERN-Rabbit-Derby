@@ -1,6 +1,5 @@
 import NavBar from "./navbar";
 import { connect } from "react-redux";
-import { currentUser } from '../../reducers/selectors'
 import * as SessionActions from "../../actions/session_actions";
 import { openModal } from '../../actions/modal';
 

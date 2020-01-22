@@ -38,6 +38,7 @@ class NavBar extends React.Component {
       //   { this.getLinks() }
       // </div>
       <div>
+        <div className="header">
       {
         this.props.currentUser ? (
           <Dropdown currentUser={this.props.currentUser} logout={this.props.logout} />
@@ -48,7 +49,8 @@ class NavBar extends React.Component {
             </div>
           )
       }
-      {/* <div className="temp"></div> */ }
+      <div className="temp"></div>
+        </div>
         </div >
 
     );

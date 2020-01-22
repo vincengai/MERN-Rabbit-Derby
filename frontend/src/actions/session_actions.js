@@ -41,7 +41,7 @@ export const signup = user => dispatch => {
     SessionAPIUtil.signup(user)
       .then(
         () => dispatch(receiveUserLogin()),
-        error => dispatch(receiveErrors(error.responseJSON))
+        error => dispatch(receiveErrors(error.data))
       )
   );
 };
@@ -57,7 +57,7 @@ export const login = user => dispatch => {
         dispatch(receiveCurrentUser(decoded));
       })
       .catch(error => {
-        dispatch(receiveErrors(error.responseJSON));
+        dispatch(receiveErrors(error.data));
       })
   );
 };

@@ -22,11 +22,7 @@ class SignupForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // console.log("FUCK");
-    setTimeout(() => {
-      this.props.signup(this.state)
-        .then(this.props.closeModal())
-    }, 100);
+    this.props.signup(this.state)
   }
 
   renderErrors() {

@@ -22,11 +22,7 @@ class LoginForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // console.log("FUCK");
-    setTimeout(() => {
-          this.props.login(this.state)
-            .then(this.props.closeModal());
-    }, 100);
+        this.props.login(this.state)
   }
 
   renderErrors() {

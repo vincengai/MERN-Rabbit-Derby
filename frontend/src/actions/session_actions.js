@@ -1,6 +1,8 @@
 import jwt_decode from "jwt-decode";
 import * as SessionAPIUtil from "../util/session_api_util";
 
+import {closeModal} from './modal';
+
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_USER_LOGIN = "RECEIVE_USER_LOGIN";
@@ -46,6 +48,7 @@ export const signup = user => dispatch => {
         SessionAPIUtil.setAuthToken(token);
         const decoded = jwt_decode(token);
         dispatch(receiveCurrentUser(decoded));
+        dispatch(closeModal());
       })
       .catch(error => {
         dispatch(receiveErrors(error.response.data));
@@ -62,6 +65,7 @@ export const login = user => dispatch => {
         SessionAPIUtil.setAuthToken(token);
         const decoded = jwt_decode(token);
         dispatch(receiveCurrentUser(decoded));
+        dispatch(closeModal());
       })
       .catch(error => {
         dispatch(receiveErrors(error.response.data));

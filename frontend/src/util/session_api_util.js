@@ -11,7 +11,8 @@ export const setAuthToken = token => {
 };
 
 export const signup = userData => {
-  return axios.post("/api/users/register", userData);
+  return axios.post("/api/users/register", userData)
+    .then( () => login(userData));
 };
 
 export const login = userData => {

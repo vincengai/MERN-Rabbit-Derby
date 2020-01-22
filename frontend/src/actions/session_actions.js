@@ -64,7 +64,7 @@ export const login = user => dispatch => {
         dispatch(receiveCurrentUser(decoded));
       })
       .catch(error => {
-        dispatch(receiveErrors(error.data));
+        dispatch(receiveErrors(error.response.data));
       })
   );
 };

@@ -16,7 +16,7 @@ import React from "react";
 
 const MainPage = () => (
       <div>
-        <h1>Rabbit Derby</h1>
+        {/* <h1>Rabbit Derby</h1> */}
       </div>
 );
 

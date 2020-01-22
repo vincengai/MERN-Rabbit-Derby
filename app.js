@@ -31,6 +31,9 @@ require("./config/passport")(passport);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+// app.use(express.static('stylesheets'));
+app.use(express.static(__dirname + '/stylesheets'));
+
 
 app.use("/api/users", users);
 

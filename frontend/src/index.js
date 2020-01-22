@@ -5,6 +5,7 @@ import configureStore from "./store/store";
 import jwt_decode from "jwt-decode";
 import * as SessionAPIUtil from "./util/session_api_util";
 import * as SessionActions from "./actions/session_actions";
+import './stylesheets/index.css';
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -38,6 +39,7 @@ if (localStorage.jwtToken) {
 }
 // Render our root component and pass in the store as a prop
 const root = document.getElementById("root");
+window.getState = store.getState;
 
 ReactDOM.render(<Root store={store} />, root);
 });

@@ -5,14 +5,11 @@ import Dropdown from "./dropdown";
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
-    this.logoutUser = this.logoutUser.bind(this);
+    // this.logoutUser = this.logoutUser.bind(this);
     // this.getLinks = this.getLinks.bind(this);
   }
 
-  logoutUser(event) {
-    event.preventDefault();
-    this.props.logout();
-  }
+
 
   // getLinks() {
   //   if (this.props.loggedIn) {

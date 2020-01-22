@@ -15,12 +15,12 @@ const receiveCurrentUser = currentUser => {
 };
 
 // Dispatched on user signup to redirect to the login page
-const receiveUserLogin = data => {
-  return {
-    type: RECEIVE_USER_LOGIN,
-    data
-  };
-};
+// const receiveUserLogin = data => {
+//   return {
+//     type: RECEIVE_USER_LOGIN,
+//     data
+//   };
+// };
 
 // Dispatched on user logout
 const receiveUserLogout = () => {
@@ -40,10 +40,16 @@ const receiveErrors = errors => {
 export const signup = user => dispatch => {
   return (
     SessionAPIUtil.signup(user)
-      .then(
-        () => dispatch(login(user)),
-        error => dispatch(receiveErrors(error.response.data))
-      )
+      .then(res => {
+        const { token } = res.data;
+        localStorage.setItem("jwtToken", token);
+        SessionAPIUtil.setAuthToken(token);
+        const decoded = jwt_decode(token);
+        dispatch(receiveCurrentUser(decoded));
+      })
+      .catch(error => {
+        dispatch(receiveErrors(error.response.data));
+      })
   );
 };
 

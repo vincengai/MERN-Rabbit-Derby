@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-export const retrieveAllHighscore = () => {
-    return axios.get('/api/highscores/', highscoreData);
+export const retrieveAllHighscores = () => {
+    return axios.get('/api/highscores/');
 };
 
-export const retrieveUserHighscore = userId => {
-    return axios.get(`/api/highscores/user/${userId}`, highscoreData);
+export const retrieveUserHighscores = userId => {
+    return axios.get(`/api/highscores/user/${userId}`);
 };
 
 export const postNewHighscore = data => {

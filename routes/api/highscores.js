@@ -7,7 +7,8 @@ const Highscore = require('../../models/highscore');
 
 router.get('/', (req, res) => {
     Highscore.find()
-        .sort({ date: -1 })
+        .sort({ score: -1 })
+        .limit(5)
         .then(highscores => res.json(highscores))
         .catch(err => res.status(404).json({ nohighscoresfound: 'No highscores found' }));
 });
@@ -15,6 +16,7 @@ router.get('/', (req, res) => {
 router.get('/user/:user_id', (req, res) => {
     Highscore.find({user: req.params.user_id})
         .sort({ score: -1 })
+        .limit(5)
         .then(highscores => res.json(highscores))
         .catch(err =>
             res.status(404).json({ nohighscoresfound: 'No highscores found from this user'}

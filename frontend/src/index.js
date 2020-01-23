@@ -8,6 +8,7 @@ import * as SessionActions from "./actions/session_actions";
 import './stylesheets/index.css';
 
 
+
 document.addEventListener("DOMContentLoaded", () => {
 let store;
 // If a returning user has a session token stored in localStorage
@@ -38,6 +39,7 @@ if (localStorage.jwtToken) {
   store = configureStore({});
 }
 // Render our root component and pass in the store as a prop
+
 const root = document.getElementById("root");
 window.getState = store.getState;
 

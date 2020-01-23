@@ -56,7 +56,7 @@ class LoginForm extends React.Component {
               onChange={ this.update("password") }
               placeholder="Password" />
             <br />
-            <input type="submit" value="Submit" onClick={this.handleSubmit}/>
+            <input type="submit" value="Submit" onClick={this.handleSubmit} />
             { this.renderErrors() }
           </div>
         </form>

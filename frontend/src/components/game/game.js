@@ -6,6 +6,7 @@ function Game() {
   this.traps = [];
 }
 
+// Window size
 Game.DIM_X = 1000;
 Game.DIM_Y = 600;
 
@@ -22,13 +23,12 @@ Game.prototype.add = function add(object) {
 Game.prototype.addRabbit = function addRabbit() {
   const rabbit = new Rabbit({
     pos: [0, 0],
-    vel: [1, 1],
+    xVelocity = 1,
+    yVelocity = 0,
     radius: 5,
     game: this
   });
-
   this.add(rabbit);
-
   return rabbit;
 };
 
@@ -46,28 +46,33 @@ Game.prototype.checkCollisions = function checkCollisions() {
   for (let i = 0; i < objsExceptRabbit.length; i++) {
     const object = objsExceptRabbit[i];
     if (rabbit.isCollidedWith(object)) {
-      // Game over logic and record score
-      return;
+      if (object instanceof Trap) {
+        // Game over logic and record score
+        return;
+      }
+      // else if (object instanceof Wall) {
+        // Fall logic
+      // }
     }
   }
 };
 
-Game.prototype.draw = function draw(ctx) {
-  ctx.clearReact(0, 0, Game.DIM_X, Game.DIM_Y);
-  this.allObjects().forEach(function(object) {
-    object.draw(ctx);
-  });
+// Game.prototype.draw = function draw(ctx) {
+//   ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
+//   this.allObjects().forEach(function(object) {
+//     object.draw(ctx);
+//   });
+// };
+
+Game.prototype.step = function step(delta) {
+  this.moveObjects(delta);
+  this.checkCollisions();
 };
 
 Game.prototype.moveObjects = function moveObjects(delta) {
   this.allObjects().forEach(function(object) {
     object.move(delta);
   });
-};
-
-Game.prototype.step = function step(delta) {
-  this.moveObjects(delta);
-  this.checkCollisions();
 };
 
 module.exports = Game;

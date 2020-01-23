@@ -30,3 +30,5 @@ Rabbit.prototype.accelerate = function accelerate() {
 Rabbit.prototype.jump = function jump() {
 
 };
+
+module.exports = Rabbit;

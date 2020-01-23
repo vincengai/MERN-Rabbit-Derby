@@ -22,9 +22,7 @@ class LoginForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log("FUCK");
-    this.props.login(this.state)
-      .then(this.props.closeModal());
+        this.props.login(this.state)
   }
 
   renderErrors() {
@@ -58,7 +56,7 @@ class LoginForm extends React.Component {
               onChange={ this.update("password") }
               placeholder="Password" />
             <br />
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" onClick={this.handleSubmit}/>
             { this.renderErrors() }
           </div>
         </form>

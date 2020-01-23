@@ -22,9 +22,7 @@ class SignupForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log("FUCK");
     this.props.signup(this.state)
-      .then(this.props.closeModal());
   }
 
   renderErrors() {
@@ -60,7 +58,7 @@ class SignupForm extends React.Component {
               placeholder="Password"
             />
             <br />
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" onClick={this.handleSubmit}/>
           </div>
           { this.renderErrors() }
         </form>

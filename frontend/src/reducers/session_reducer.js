@@ -19,9 +19,7 @@ const sessionReducer = (oldState = _defaultState, action) => {
     //   nextState["isSignedIn"] = true;
     //   return nextState;
     case SessionActions.RECEIVE_USER_LOGOUT:
-      nextState["isAuthenticated"] = false;
-      nextState["currentUser"] = undefined;
-      return nextState;
+      return _defaultState;
     default:
       return oldState;
   }

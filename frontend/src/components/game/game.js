@@ -8,8 +8,8 @@ function Game() {
 }
 
 // Window size
-Game.DIM_X = 1000;
-Game.DIM_Y = 600;
+Game.DIM_X = 320;
+Game.DIM_Y = 180;
 
 Game.prototype.add = function add(object) {
   if (object instanceof Rabbit) {

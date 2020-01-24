@@ -1,11 +1,10 @@
 
-(function () {
   var resourceCache = {};
   var loading = [];
   var readyCallbacks = [];
 
   // Load an image url or an array of image urls
-  function load(urlOrArr) {
+  export const load = (urlOrArr) => {
     if (urlOrArr instanceof Array) {
       urlOrArr.forEach(function (url) {
         _load(url);
@@ -16,7 +15,7 @@
     }
   }
 
-  function _load(url) {
+  export const _load = (url) => {
     if (resourceCache[url]) {
       return resourceCache[url];
     }
@@ -34,11 +33,11 @@
     }
   }
 
-  function get(url) {
+export const get = (url) => {
     return resourceCache[url];
   }
 
-  function isReady() {
+export const isReady = () => {
     var ready = true;
     for (var k in resourceCache) {
       if (resourceCache.hasOwnProperty(k) &&
@@ -49,7 +48,7 @@
     return ready;
   }
 
-  function onReady(func) {
+  export const onReady = (func) => {
     readyCallbacks.push(func);
   }
 
@@ -59,7 +58,6 @@
     onReady: onReady,
     isReady: isReady
   };
-})();
 
 // okay so now for images just call 
 // resources.load([
@@ -67,3 +65,5 @@
 //   'img/terrain.png'
 // ]);
 // resources.onReady(init);
+
+// export default resources;

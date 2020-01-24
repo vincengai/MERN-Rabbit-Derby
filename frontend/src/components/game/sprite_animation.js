@@ -1,12 +1,11 @@
 import React from "react";
-import "../assets/sprite/Pandasprite.png";
+const rabbit = require("../assets/sprite/rabbit.png");
 
 function spriteAnimation() {
 
   let img = new Image()
-  img = resources.load(['img/rabbit.png']);
-  resources.onReady(init);
-  // img.src = "frontend/src/components/assets/sprite/rabbit.png";
+  img = rabbit;
+  img.src = "https://i.imgur.com/vvbTIR8.png";
   img.onload = function () {
     init();
   };

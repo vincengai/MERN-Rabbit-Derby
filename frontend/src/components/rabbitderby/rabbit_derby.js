@@ -1,6 +1,8 @@
 import React from "react";
 import Game from "../game/game";
 import GameView from "../game/game_view";
+// import "../assets/sprite/rabbit.png";
+
 
 class RabbitDerby extends React.Component {
   constructor(props) {
@@ -12,20 +14,21 @@ class RabbitDerby extends React.Component {
     const rabbit = game.rabbit;
     console.log(rabbit);
 
+
     const canvas = this.refs.canvas;
     const ctx = canvas.getContext("2d");
     ctx.fillStyle = "#202020";
 
     // PANDA PANDA PANDA
     let img = new Image();
-    img.src = "https://i.postimg.cc/d0n3783X/Pandasprite.png";
+    img.src = "https://i.imgur.com/vvbTIR8.png";
     img.onload = function() {
       init();
     };
 
-    const scale = 2;
-    const width = 33;
-    const height = 35;
+    const scale = 1;
+    const width = 64;
+    const height = 64;
     const scaledWidth = scale * width;
     const scaledHeight = scale * height;
 

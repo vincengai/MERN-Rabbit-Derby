@@ -10,7 +10,7 @@ class RabbitDerby extends React.Component {
   componentDidMount() {
     const game = new Game();
     const rabbit = game.rabbit;
-    // console.log(rabbit);
+    console.log(rabbit);
 
     const canvas = this.refs.canvas;
     const ctx = canvas.getContext("2d");

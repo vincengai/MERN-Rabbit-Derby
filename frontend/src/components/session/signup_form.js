@@ -42,25 +42,31 @@ class SignupForm extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <input
+        <form onSubmit={this.handleSubmit} className="session-form">
+            <div className="float-container">
+              <label className="float-text" htmlFor="createUsername">Username</label>            
+              <input
               type="text"
+              className="text-input"
               value={this.state.username}
               onChange={this.update("username")}
               placeholder="Username"
             />
-            <br />
+            </div>
+              <div className="float-container">
+            <label className="float-text" htmlFor="createUsername">Password</label>
             <input
               type="password"
+              className="text-input"
               value={this.state.password}
               onChange={this.update("password")}
               placeholder="Password"
             />
-            <br />
-            <input type="submit" value="Submit" onClick={this.handleSubmit} />
+            <button onClick={this.handleSubmit} className="submit-btn">Submit</button>
           </div>
-          {this.renderErrors()}
+          <div className="error">
+            {this.renderErrors()}
+            </div>
         </form>
       </div>
     );

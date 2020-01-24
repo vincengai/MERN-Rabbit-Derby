@@ -49,6 +49,7 @@ class NavBar extends React.Component {
       }
       {/* <div className="temp"></div> */}
         </div>
+        <div className="yellow-stripe"></div>
         </div >
 
     );

@@ -16,18 +16,52 @@ class RabbitDerby extends React.Component {
     const ctx = canvas.getContext("2d");
     ctx.fillStyle = "#202020";
 
-    var controller, loop;
-    // rabbit = {
-    //   height: 32,
-    //   jumping: true, // if it's in the air, jump is true, and you won't be able to jump again
-    //   width: 32,
-    //   x: -30, // center of the canvas
-    //   xVelocity: 1, // Speed movement
-    //   y: 160,
-    //   yVelocity: 0
-    // };
+    // PANDA PANDA PANDA
+    let img = new Image();
+    img.src = "https://i.postimg.cc/d0n3783X/Pandasprite.png";
+    img.onload = function() {
+      init();
+    };
 
-    controller = {
+    const scale = 2;
+    const width = 33;
+    const height = 35;
+    const scaledWidth = scale * width;
+    const scaledHeight = scale * height;
+
+    const cycleLoop = [0, 1, 0, 2];
+    let currentLoopIndex = 0;
+    let frameCount = 0;
+
+    function drawFrame(frameX, frameY, canvasX, canvasY) {
+      ctx.drawImage(img, frameX * width, frameY * height, width, height, canvasX, canvasY, scaledWidth, scaledHeight);
+    }
+
+    function init() {
+      drawFrame(0, 0, 0, 0);
+      drawFrame(1, 0, scaledWidth, 0);
+      drawFrame(0, 0, scaledWidth * 2, 0);
+      drawFrame(2, 0, scaledWidth * 3, 0);
+      window.requestAnimationFrame(step);
+    }
+
+    function step() {
+      frameCount++;
+      if (frameCount < 15) {
+        window.requestAnimationFrame(step);
+        return;
+      }
+      frameCount = 0;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawFrame(cycleLoop[currentLoopIndex], 0, 0, 0);
+      currentLoopIndex++;
+      if (currentLoopIndex >= cycleLoop.length) {
+        currentLoopIndex = 0;
+      }
+      window.requestAnimationFrame(step);
+    }
+
+    const controller = {
       right: true,
       up: false,
       shift: false,
@@ -49,7 +83,7 @@ class RabbitDerby extends React.Component {
       }
     };
 
-    loop = function() {
+    const loop = function() {
       // JUMP FUNCTION
       if (controller.up && rabbit.jumping == false) {
         rabbit.yVelocity -= 20; // -20 To send the object Up

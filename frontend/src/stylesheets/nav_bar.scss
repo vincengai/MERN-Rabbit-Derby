@@ -6,18 +6,18 @@
   justify-content: flex-end;
   overflow-x: hidden;
   overflow-y: hidden;
-  height: 32px;
+  height: 42px;
   padding: 8px;
   padding-left: 0;
   line-height: 16px;
-  border-bottom: 1px solid var($color1);
+  border-bottom: 1px solid var(--red);
 
  }
 
  .header .top-buttons {
    display: flex;
    margin-bottom: -1px;
-   border-left: 1px solid var($color2);
+  /* border-left: 1px solid var(--background); */
    margin-left: 8px;
    padding-left: 8px;
    margin-right: 5px;
@@ -44,7 +44,7 @@
 
  .btn.login {
   color: rgba(255, 107, 107, 1);
-  background-color: white;
+  background-color: var(--yellow);
   border: 1px solid rgba(242, 220, 111, 1);
  }
 
@@ -54,12 +54,12 @@
  }
 
  .btn.login:hover {
-   color: rgba(0,121,211,0.5);
+   color: var(--background);
    border: 1px solid rgba(242, 220, 111, 1);
  }
 
  .btn.signup:hover{
-   background-color: rgba(242, 220, 111, 1);
+   color: var(--background);
  }
 
  .btn {
@@ -72,21 +72,24 @@
   text-decoration: none;
   letter-spacing: 0.5px;
   line-height: 24px;
-  padding: 3px 2.2em 3px;
+  padding: 3px 2.7em 3px;
   font-size: 13px;
   font-weight: 700;
-  margin: 0 5px;
-  border-radius: 4px;
+  margin: 25px 5px 0px 5px;
+  border-radius: 12px;
   outline: 0;
   cursor: pointer;
 }
 
 .dropdown-btn {
-  border: 1px solid var($color1);
-  border-radius: 4px;
+  border: 1px solid var(--yellow);
+  background-color: var(--yellow);
+  border-radius: 12px;
   box-sizing: border-box;
   margin-right: 30px;
   padding-right: 5px;
+  margin-top: 15px;
+  overflow: visible;
   position: relative;
   display: inline-block;
   width: 180px;
@@ -97,6 +100,7 @@
 .grid {
   display: inline-grid;
   width: 170px;
+  margin-top: 2px;
   grid-template-columns: 30px auto auto 30px;
   grid-template-rows: auto;
   padding: 5px;
@@ -132,7 +136,7 @@
   padding-top: 5px;
   grid-column-start: 1;
   grid-row-start: 1;
-  color: var($color1);
+  color: var(--red);
  
 }
 
@@ -147,24 +151,26 @@
   grid-row-start: 1;
   text-align: center;
   padding: 5px 2px 2px 2px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 16px;
   white-space: nowrap;
   text-transform: lowercase;
   pointer-events: none;
+  color: var(--red);
 }
 
 svg.btn-fill {
-  fill: var($color1);
+  fill: var(--red);
 }
 
 
 .dropdown-item {
-  color: #1c1c1c;
+  color: var(--red);
   display: flex;
   flex-direction: row;
-  fill: var($color2);
+  background-color: var(--yellow);
+  fill: var(--red);
   padding: 10px 16px 10px 16px;
   align-items: center;
   font-size: 14px;  
@@ -175,10 +181,10 @@ svg.btn-fill {
   cursor: pointer;
 }
 .dropdown-item:hover {
-  background-color: var($color2);
-  border-color: var($color2);
-  color: #FFF;
-  fill: #FFF;
+ /* background-color: var($color2);
+  border-color: var($color2); */
+  color: var(--background);
+  fill: var(--background);
 }
 
 .logout-btn {
@@ -194,4 +200,12 @@ svg.btn-fill {
   font-weight: 700;
   line-height: 16px;
   text-transform: capitalize;
+}
+
+.yellow-stripe {
+  background-color: var(--yellow);
+  width: 100%;
+  margin-top: -10px;
+  display: block;
+  height: 16px;
 }

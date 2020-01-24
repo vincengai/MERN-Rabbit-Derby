@@ -1,13 +1,14 @@
 :root {
-  $color1: rgba(44, 85, 91, 1);
-  $color2: rgba(116, 204, 198, 1);
-  $color3: rgba(234, 255, 234, 1);
-  $color4: rgba(255, 107, 107, 1);
-  $color5: rgba(242, 220, 111, 1);
+  --darkblue: rgba(44, 85, 91, 1);
+  --lightblue: rgba(116, 204, 198, 1);
+  --background: rgba(234, 255, 234, 1);
+  --red: rgba(255, 107, 107, 1);
+  --yellow: rgba(242, 220, 111, 1);
 }
 
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', sans-serif !important;
+  background-color: var(--background) !important;
 }
 
 h1 {

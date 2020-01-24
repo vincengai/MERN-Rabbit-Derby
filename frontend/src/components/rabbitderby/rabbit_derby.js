@@ -85,7 +85,7 @@ class RabbitDerby extends React.Component {
 
     const loop = function() {
       frameCount++;
-      if (frameCount < 5) {
+      if (frameCount < 3) {
         window.requestAnimationFrame(loop);
         return;
       }
@@ -103,7 +103,7 @@ class RabbitDerby extends React.Component {
       }
 
       // Y-axis decay, Updating X & Y Current Position in terms of
-      rabbit.yVelocity += 10.5; // gravity, adds 1.5 per every frame of animation, w/o this the Object will never fall
+      rabbit.yVelocity += 1.5; // gravity, adds 1.5 per every frame of animation, w/o this the Object will never fall
       rabbit.pos[0] += rabbit.xVelocity; // Adds x velocity to current POS
       rabbit.pos[1] += rabbit.yVelocity; // Adds y velocity to current POS
       rabbit.yVelocity *= 0.9; // friction,  gives effect of slowing down, allows friction on Y axis

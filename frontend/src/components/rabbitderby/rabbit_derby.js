@@ -19,9 +19,9 @@ class RabbitDerby extends React.Component {
     // PANDA PANDA PANDA
     let img = new Image();
     img.src = "https://i.postimg.cc/d0n3783X/Pandasprite.png";
-    // img.onload = function() {
-    //   init();
-    // };
+    img.onload = function() {
+      init();
+    };
 
     const scale = 2;
     const width = 33;
@@ -42,7 +42,7 @@ class RabbitDerby extends React.Component {
       drawFrame(1, 0, scaledWidth, 0);
       drawFrame(0, 0, scaledWidth * 2, 0);
       drawFrame(2, 0, scaledWidth * 3, 0);
-      window.requestAnimationFrame(step);
+      window.requestAnimationFrame(loop);
     }
 
     function step() {
@@ -84,6 +84,13 @@ class RabbitDerby extends React.Component {
     };
 
     const loop = function() {
+      frameCount++;
+      if (frameCount < 5) {
+        window.requestAnimationFrame(loop);
+        return;
+      }
+      frameCount = 0;
+
       // JUMP FUNCTION
       if (controller.up && rabbit.jumping == false) {
         rabbit.yVelocity -= 20; // -20 To send the object Up
@@ -92,15 +99,15 @@ class RabbitDerby extends React.Component {
 
       // MOVING RIGHT FUNCTION
       if (controller.right || !controller.right) {
-        rabbit.xVelocity += 0.05; // += is for smoother graphics than a set constant, MIGHT HAVE A CONSTANT X VELOCITY TO PREVENT INCREASE OF SPEED
+        rabbit.xVelocity += 1.55; // += is for smoother graphics than a set constant, MIGHT HAVE A CONSTANT X VELOCITY TO PREVENT INCREASE OF SPEED
       }
 
       // Y-axis decay, Updating X & Y Current Position in terms of
-      rabbit.yVelocity += 1.5; // gravity, adds 1.5 per every frame of animation, w/o this the Object will never fall
+      rabbit.yVelocity += 10.5; // gravity, adds 1.5 per every frame of animation, w/o this the Object will never fall
       rabbit.pos[0] += rabbit.xVelocity; // Adds x velocity to current POS
       rabbit.pos[1] += rabbit.yVelocity; // Adds y velocity to current POS
       rabbit.yVelocity *= 0.9; // friction,  gives effect of slowing down, allows friction on Y axis
-      rabbit.xVelocity *= 0.9; // friction, gradually reduces velocity, slowly reduces to 0, giving the effect of slowing down
+      // rabbit.xVelocity *= 0.9; // friction, gradually reduces velocity, slowly reduces to 0, giving the effect of slowing down
       //  CHANGE CONSTANT ON xVelocity TO HAVE A RETURN A SPEED CLOSE TO BASE SPEED
 
       if (controller.shift) {
@@ -113,40 +120,67 @@ class RabbitDerby extends React.Component {
       }
 
       // Collision detection, in regards to falling onto the "floor" and landing
-      if (rabbit.pos[1] > 180 - 16 - 32) {
+      if (rabbit.pos[1] > 340 - 16 - 32) {
         // 180 being the very bottom of your screen
         rabbit.jumping = false; // -60 being the location of the rendered floor, this number is subject to change in terms of Object floor
-        rabbit.pos[1] = 180 - 16 - 32; // -32 being the top coordinate of the Object, this number is subject to change in terms of the Object
+        rabbit.pos[1] = 340 - 16 - 32; // -32 being the top coordinate of the Object, this number is subject to change in terms of the Object
         rabbit.yVelocity = 0;
       } // Set Jumping to False, to allow jump again, Y coordinate to equal position to update current POS, yVelocity to 0 because youre hitting floor
 
       // background styling
       ctx.fillStyle = "#202020";
-      ctx.fillRect(0, 0, 320, 180); // x, y, width, height
+      ctx.fillRect(0, 0, 640, 360); // x, y, width, height
 
       // rabbit styling
       // ctx.fillStyle = "#ff0000"; // hex for red
       // ctx.beginPath();
       // ctx.rect(rabbit.pos[0], rabbit.pos[1], 50, 50);
       // ctx.fill();
-      const panda1 = ctx.drawImage(img, 0, 0, 33, 35, rabbit.pos[0], rabbit.pos[1], 0, 0);
-      ctx.drawImage(img, rabbit.pos[0], rabbit.pos[1]);
+    
+      // const panda1 = ctx.drawImage(img, 0, 0, width, height, rabbit.pos[0], rabbit.pos[1], width, height);
+      // drawFrame(0, 0, rabbit.pos[0], rabbit.pos[1]);
+      // drawFrame(0, 0, rabbit.pos[0], rabbit.pos[1]);
+      // drawFrame(1, 0, rabbit.pos[0], rabbit.pos[1]);
+      // drawFrame(0, 0, rabbit.pos[0], rabbit.pos[1]);
+      // drawFrame(2, 0, rabbit.pos[0], rabbit.pos[1]);
+      // frameCount++;
+      // if (frameCount < 15) {
+      //   window.requestAnimationFrame(loop);
+      //   return;
+      // }
+      // frameCount = 0;
+      // frameCount++;
+      // if (frameCount < 15) {
+      //   window.requestAnimationFrame(loop);
+      //   return;
+      // }
+      // frameCount = 0;
+      ctx.fillStyle = "#202020";
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      drawFrame(cycleLoop[currentLoopIndex], 0, rabbit.pos[0], rabbit.pos[1]);
+      currentLoopIndex++;
+      if (currentLoopIndex >= cycleLoop.length) {
+        currentLoopIndex = 0;
+      }
+      window.requestAnimationFrame(loop);
+
 
       // "Ground" styling
-      ctx.strokeStyle = "#202830";
-      ctx.lineWidth = 4;
-      ctx.beginPath();
-      ctx.moveTo(0, 164);
-      ctx.lineTo(320, 164);
-      ctx.stroke();
+      // ctx.strokeStyle = "#202830";
+      // ctx.lineWidth = 4;
+      // ctx.beginPath();
+      // ctx.moveTo(0, 164);
+      // ctx.lineTo(320, 164);
+      // ctx.stroke();
 
       // call update when the browser is ready to draw again
-      window.requestAnimationFrame(loop);
+      // window.requestAnimationFrame(loop);
     };
 
     window.addEventListener("keydown", controller.keyListener);
     window.addEventListener("keyup", controller.keyListener);
-    window.requestAnimationFrame(loop);
+    // window.requestAnimationFrame(loop);
 
 
   }

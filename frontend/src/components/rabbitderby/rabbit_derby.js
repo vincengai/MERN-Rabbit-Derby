@@ -19,9 +19,9 @@ class RabbitDerby extends React.Component {
     // PANDA PANDA PANDA
     let img = new Image();
     img.src = "https://i.postimg.cc/d0n3783X/Pandasprite.png";
-    img.onload = function() {
-      init();
-    };
+    // img.onload = function() {
+    //   init();
+    // };
 
     const scale = 2;
     const width = 33;
@@ -122,13 +122,15 @@ class RabbitDerby extends React.Component {
 
       // background styling
       ctx.fillStyle = "#202020";
+      ctx.fillRect(0, 0, 320, 180); // x, y, width, height
 
       // rabbit styling
-      ctx.fillRect(0, 0, 320, 180); // x, y, width, height
-      ctx.fillStyle = "#ff0000"; // hex for red
-      ctx.beginPath();
-      ctx.rect(rabbit.pos[0], rabbit.pos[1], rabbit.radius, rabbit.radius);
-      ctx.fill();
+      // ctx.fillStyle = "#ff0000"; // hex for red
+      // ctx.beginPath();
+      // ctx.rect(rabbit.pos[0], rabbit.pos[1], 50, 50);
+      // ctx.fill();
+      const panda1 = ctx.drawImage(img, 0, 0, 33, 35, rabbit.pos[0], rabbit.pos[1], 0, 0);
+      ctx.drawImage(img, rabbit.pos[0], rabbit.pos[1]);
 
       // "Ground" styling
       ctx.strokeStyle = "#202830";
@@ -144,7 +146,7 @@ class RabbitDerby extends React.Component {
 
     window.addEventListener("keydown", controller.keyListener);
     window.addEventListener("keyup", controller.keyListener);
-    // window.requestAnimationFrame(loop);
+    window.requestAnimationFrame(loop);
 
 
   }

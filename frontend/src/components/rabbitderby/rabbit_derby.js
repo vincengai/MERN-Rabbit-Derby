@@ -42,7 +42,7 @@ class RabbitDerby extends React.Component {
       drawFrame(1, 0, scaledWidth, 0);
       drawFrame(0, 0, scaledWidth * 2, 0);
       drawFrame(2, 0, scaledWidth * 3, 0);
-      // window.requestAnimationFrame(step); UNCOMMENT FOR SEIZURE PANDA
+      window.requestAnimationFrame(step);
     }
 
     function step() {
@@ -144,7 +144,7 @@ class RabbitDerby extends React.Component {
 
     window.addEventListener("keydown", controller.keyListener);
     window.addEventListener("keyup", controller.keyListener);
-    window.requestAnimationFrame(loop);
+    // window.requestAnimationFrame(loop);
 
 
   }

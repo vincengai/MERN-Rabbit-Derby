@@ -8,6 +8,7 @@ function Rabbit(options) {
   options.xVelocity = 1;
   options.yVelocity = 0;
   options.radius = Rabbit.RADIUS;
+  options.image = "https://i.postimg.cc/d0n3783X/Pandasprite.png";
   MovingObject.call(this, options);
 }
 

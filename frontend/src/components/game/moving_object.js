@@ -5,7 +5,8 @@ function MovingObject(options) {
   this.xVelocity = options.xVelocity;
   this.yVelocity = options.yVelocity;
   this.radius = options.radius;
-  this.game = options.game
+  this.game = options.game;
+  this.image = options.image;
 }
 
 MovingObject.prototype.collideWith = function collideWith(otherObject) {

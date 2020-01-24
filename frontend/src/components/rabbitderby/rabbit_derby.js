@@ -1,6 +1,7 @@
 import React from "react";
 import Game from "../game/game";
 import GameView from "../game/game_view";
+import resources from "../game/resources";
 
 class RabbitDerby extends React.Component {
   constructor(props) {
@@ -93,17 +94,17 @@ class RabbitDerby extends React.Component {
 
       // JUMP FUNCTION
       if (controller.up && rabbit.jumping == false) {
-        rabbit.yVelocity -= 20; // -20 To send the object Up
+        rabbit.yVelocity -= 30; // -20 To send the object Up
         rabbit.jumping = true; // So the object cant jump again
       }
 
       // MOVING RIGHT FUNCTION
       if (controller.right || !controller.right) {
-        rabbit.xVelocity += 1.55; // += is for smoother graphics than a set constant, MIGHT HAVE A CONSTANT X VELOCITY TO PREVENT INCREASE OF SPEED
+        rabbit.xVelocity += 1.5; // += is for smoother graphics than a set constant, MIGHT HAVE A CONSTANT X VELOCITY TO PREVENT INCREASE OF SPEED
       }
 
       // Y-axis decay, Updating X & Y Current Position in terms of
-      rabbit.yVelocity += 1.5; // gravity, adds 1.5 per every frame of animation, w/o this the Object will never fall
+      rabbit.yVelocity += 2.5; // gravity, adds 1.5 per every frame of animation, w/o this the Object will never fall
       rabbit.pos[0] += rabbit.xVelocity; // Adds x velocity to current POS
       rabbit.pos[1] += rabbit.yVelocity; // Adds y velocity to current POS
       rabbit.yVelocity *= 0.9; // friction,  gives effect of slowing down, allows friction on Y axis

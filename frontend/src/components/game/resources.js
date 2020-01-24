@@ -1,5 +1,4 @@
-
-(function () {
+export default (function () {
   var resourceCache = {};
   var loading = [];
   var readyCallbacks = [];

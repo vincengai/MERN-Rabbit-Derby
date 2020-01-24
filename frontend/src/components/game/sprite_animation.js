@@ -3,17 +3,19 @@ import "../assets/sprite/Pandasprite.png";
 
 function spriteAnimation() {
 
-  let img = new Image();
-  img.src = "https://i.postimg.cc/d0n3783X/Pandasprite.png";
+  let img = new Image()
+  img = resources.load(['img/rabbit.png']);
+  resources.onReady(init);
+  // img.src = "frontend/src/components/assets/sprite/rabbit.png";
   img.onload = function () {
     init();
   };
 
   window.requestAnimationFrame(step);
 
-  const scale = 2;
-  const width = 33;
-  const height = 35;
+  const scale = 1;
+  const width = 64;
+  const height = 64;
   const scaledWidth = scale * width;
   const scaledHeight = scale * height;
 
@@ -54,13 +56,6 @@ function spriteAnimation() {
     }
     window.requestAnimationFrame(step);
   }
-
-
-
-    return(
-        <canvas width="300" height="200"></canvas>
-    )
-  }
-
+}
 
 export default spriteAnimation;

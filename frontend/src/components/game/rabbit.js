@@ -6,7 +6,7 @@ class Rabbit {
     this.vel = options.vel;
     this.type = "image";
     this.image = new Image();
-    this.image.src = "http://www.cutestpaw.com/wp-content/uploads/2014/01/Rabbit.jpg";
+    this.image.src = "https://i.imgur.com/3hj9ghB.png";
     // this.image.src = "../assets/sprites/rabbit.jpg";
   }
 

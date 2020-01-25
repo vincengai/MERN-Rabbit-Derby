@@ -1,6 +1,5 @@
 import Rabbit from "./rabbit";
 import MapFrag from "./mapfrag";
-import TerrainObject from "./terrain_obj";
 import map1 from "./mapfrag/map1";
 import map2 from "./mapfrag/map2";
 import starting_map from "./mapfrag/starting_map";
@@ -9,7 +8,6 @@ class Game {
   constructor() {
     this.dimX = 640;
     this.dimY = 360;
-    // this.rabbit = new TerrainObject(RABBIT);
     this.rabbit = new Rabbit({
       width: 20,
       height: 20,
@@ -48,8 +46,8 @@ class Game {
   checkCollisions() {
     let firstMap = this.loadedMaps[0];
 
-    for (let i = 0; i < firstMap.length; i++) {
-      let obstacle = firstMap[i];
+    for (let i = 0; i < firstMap.obstacles.length; i++) {
+      let obstacle = firstMap.obstacles[i];
 
       if (obstacle.isCollidedWith(this.rabbit)) {
         console.log('rabbit hit');

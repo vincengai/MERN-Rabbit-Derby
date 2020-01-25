@@ -6,8 +6,7 @@ class Rabbit {
     this.vel = options.vel;
     this.type = "image";
     this.image = new Image();
-    this.image.src = "http://www.cutestpaw.com/wp-content/uploads/2014/01/Rabbit.jpg";
-    // this.image.src = "../assets/sprites/rabbit.jpg";
+    this.image.src = "../assets/sprites/rabbit.jpg";
   }
 
   draw(ctx) {
@@ -40,10 +39,11 @@ class Rabbit {
       (myTop > otherBottom) ||
       (myRight < otherLeft) ||
       (myLeft > otherRight)) {
-      crash = false;
-    }
+        crash = false;
+      }
     return crash;
   }
 }
 
+// module.exports = Bunny;
 export default Rabbit;

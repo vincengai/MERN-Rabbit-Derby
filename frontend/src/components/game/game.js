@@ -1,67 +1,78 @@
-const Rabbit = require("./rabbit");
-// const Trap = require("./trap");
+import Rabbit from "./rabbit";
+import MapFrag from "./mapfrag";
+import TerrainObject from "./terrain_obj";
+import map1 from "./mapfrag/map1";
+import map2 from "./mapfrag/map2";
+import starting_map from "./mapfrag/starting_map";
 
-function Game() {
-  this.traps = [];
-  this.rabbit = new Rabbit({ game: this });
-  // this.add(new Rabbit({ game: this }))
-}
-
-// Window size
-Game.DIM_X = 640;
-Game.DIM_Y = 360;
-
-Game.prototype.add = function add(object) {
-  if (object instanceof Rabbit) {
-    this.rabbit = object;
-  // } else if (object instanceof Trap) {
-    // this.traps.push(object);
-  } else {
-    throw new Error("Unknown object");
+class Game {
+  constructor() {
+    this.dimX = 640;
+    this.dimY = 360;
+    // this.rabbit = new TerrainObject(RABBIT);
+    this.rabbit = new Rabbit({
+      width: 20,
+      height: 20,
+      pos: [0, 220],
+      vel: [0, 0]
+    });
+    this.loadedMaps = [
+      (new MapFrag(starting_map)),
+      (new MapFrag(map1))
+    ];
+    this.nextMaps = [
+      new MapFrag(map2),
+      new MapFrag(map1),
+      new MapFrag(map2)
+    ];
   }
-}
 
-Game.prototype.objsExceptRabbit = function objsExceptRabbit() {
-  return [].concat(this.traps);
-};
+  draw(ctx) {
+    ctx.clearRect(0, 0, this.dimX, this.dimY);
 
-Game.prototype.allObjects = function allObjects() {
-  return [].concat([this.rabbit], this.traps);
-};
+    for (let i = 0; i < this.loadedMaps.length; i++) {
+      let ele = this.loadedMaps[i];
+      ele.draw(ctx);
+    }
+    this.rabbit.draw(ctx);
+  }
 
-Game.prototype.checkCollisions = function checkCollisions() {
-  const rabbit = this.rabbit;
-  const objsExceptRabbit = this.objsExceptRabbit();
-  for (let i = 0; i < objsExceptRabbit.length; i++) {
-    const object = objsExceptRabbit[i];
-    if (rabbit.isCollidedWith(object)) {
-      // if (object instanceof Trap) {
-        // Game over logic and record score
-        return;
-      // }
-      // else if (object instanceof Wall) {
-        // Fall logic
-      // }
+  move() {
+    for (let i = 0; i < this.loadedMaps.length; i++) {
+      let ele = this.loadedMaps[i];
+      ele.move();
+    }
+    this.rabbit.move();
+  }
+
+  checkCollisions() {
+    let firstMap = this.loadedMaps[0];
+
+    for (let i = 0; i < firstMap.length; i++) {
+      let obstacle = firstMap[i];
+
+      if (obstacle.isCollidedWith(this.rabbit)) {
+        console.log('rabbit hit');
+        return true;
+      }
+    }
+    return false;
+  }
+
+  checkFirstMap() {
+    let firstMap = this.loadedMaps[0];
+
+    if (firstMap.checkMarkerPosition()) {
+      this.loadedMaps.shift();
+      this.loadedMaps.push(this.nextMaps.shift());
     }
   }
-};
 
-Game.prototype.draw = function draw(ctx) {
-  ctx.clearRect(0, 0, Game.DIM_X, Game.DIM_Y);
-  this.allObjects().forEach(function(object) {
-    object.draw(ctx);
-  });
-};
+  step() {
+    this.move();
+    this.checkCollisions();
+    this.checkFirstMap();
+  }
+}
 
-Game.prototype.step = function step(delta) {
-  this.moveObjects(delta);
-  this.checkCollisions();
-};
-
-Game.prototype.moveObjects = function moveObjects(delta) {
-  this.allObjects().forEach(function(object) {
-    object.move(delta);
-  });
-};
-
-module.exports = Game;
+export default Game;

@@ -1,27 +1,25 @@
-function GameView(game, ctx) {
-  this.ctx = ctx;
-  this.game = game;
-  this.rabbit = this.game.addRabbit();
+import Game from "./game";
+
+class GameView {
+  constructor(ctx) {
+    this.game = new Game();
+    this.ctx = ctx;
+  }
+
+  start() {
+    this.game.draw(this.ctx);
+    requestAnimationFrame(this.animate.bind(this));
+  }
+
+  animate() {
+    this.game.step();
+    this.game.draw(this.ctx);
+    requestAnimationFrame(this.animate.bind(this));
+  }
+
+  stop() {
+
+  }
 }
 
-// GameView.prototype.bindKeyHandlers = function bindKeyHandlers() {
-//   const rabbit = this.rabbit;
-//   key("a", function() { rabbit.accelerate() });
-//   key("space", function() { rabbit.jump() });
-// };
-
-GameView.prototype.start = function start() {
-  // this.bindKeyHandlers();
-  this.lastTime = 0;
-  requestAnimationFrame(this.animate.bind(this));
-}
-
-GameView.prototype.animate = function animate(time) {
-  const timeDelta = time - this.lastTime;
-  this.game.step(timeDelta);
-  this.game.draw(this.ctx);
-  this.lastTime = time;
-  requestAnimationFrame(this.animate.bind(this));
-}
-
-module.exports = GameView;
+export default GameView;

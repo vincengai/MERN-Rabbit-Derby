@@ -84,7 +84,7 @@ class Rabbit {
 
     // Y-axis decay, Updating X & Y Current Position in terms of
     // this.vel[1] += 1; // gravity, adds 1.5 per every frame of animation, w/o this the Object will never fall
-    // this.pos[0] += this.vel[0]; // Adds x velocity to current POS
+    // this.pos[0] += 1; // Adds x velocity to current POS
     // this.pos[1] += this.vel[1]; // Adds y velocity to current POS
     // this.vel[1] *= 0.5; // friction,  gives effect of slowing down, allows friction on Y axis
     // rabbit.xVelocity *= 0.9; // friction, gradually reduces velocity, slowly reduces to 0, giving the effect of slowing down

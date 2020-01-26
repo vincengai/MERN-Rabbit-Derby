@@ -43,6 +43,11 @@ class Game {
   }
 
   checkCollisions() {
+    if (this.rabbit.pos[0] > this.loadedMaps[0].marker.pos[0]) {
+      this.loadedMaps.shift();
+      this.loadedMaps.push(this.nextMaps.shift());
+    }
+
     let firstMap = this.loadedMaps[0];
 
     for (let i = 0; i < firstMap.obstacles.length; i++) {

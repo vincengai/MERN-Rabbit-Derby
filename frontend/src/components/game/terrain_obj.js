@@ -43,11 +43,11 @@ class TerrainObject {
     let [x, y] = this.pos;
     let [dx, dy] = this.vel;
 
-    // if (this.type == "background") {
-    //     if (x == -(this.width)) {
-    //         x = 0;
-    //     }
-    // }
+    if (this.type == "background") {
+        if (x == -(this.width)) {
+            x = 0;
+        }
+    }
 
     let newPos = [x + dx, y + dy];
     this.pos = newPos;

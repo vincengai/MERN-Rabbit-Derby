@@ -5,13 +5,14 @@ import map2 from "./mapfrag/map2";
 import starting_map from "./mapfrag/starting_map";
 
 class Game {
-  constructor() {
+  constructor(controller) {
     this.dimX = 640;
     this.dimY = 360;
     this.rabbit = new Rabbit({
       width: 20,
       height: 20,
       pos: [10, 220],
+      controller: controller
     });
     this.loadedMaps = [
       (new MapFrag(starting_map)),

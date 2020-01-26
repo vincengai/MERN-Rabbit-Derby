@@ -3,6 +3,7 @@ class Rabbit {
     this.width = options.width;
     this.height = options.height;
     this.pos = options.pos;
+    this.controller = options.controller;
     this.vel = [0, 0]
     this.jumping = false;
     this.type = "image";
@@ -10,29 +11,6 @@ class Rabbit {
     this.image.src = "https://www.freepnglogos.com/uploads/rabbit-png/rabbit-png-transparent-images-png-only-15.png";
     // this.image.src = "https://i.imgur.com/3hj9ghB.png";
     // this.image.src = "../assets/sprites/rabbit.jpg";
-    this.controller = {
-      right: true,
-      up: false,
-      shift: false,
-      left: true,
-
-      keyListener: function (event) {
-        var key_state = event.type == "keydown" ? true : false;
-
-        switch (event.keyCode) {
-          case 32: // up key
-            this.controller.up = key_state;
-            break;
-          case 39: // right key
-            this.controller.right = key_state;
-            break;
-          case 16: // shift key
-            this.controller.shift = key_state;
-        }
-      }
-    };
-    window.addEventListener("keydown", this.controller.keyListener.bind(this));
-    window.addEventListener("keyup", this.controller.keyListener.bind(this));
   }
 
   draw(ctx) {

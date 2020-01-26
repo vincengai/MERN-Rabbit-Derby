@@ -7,7 +7,8 @@ class Rabbit {
     this.jumping = false;
     this.type = "image";
     this.image = new Image();
-    this.image.src = "https://i.imgur.com/3hj9ghB.png";
+    this.image.src = "https://www.freepnglogos.com/uploads/rabbit-png/rabbit-png-transparent-images-png-only-15.png";
+    // this.image.src = "https://i.imgur.com/3hj9ghB.png";
     // this.image.src = "../assets/sprites/rabbit.jpg";
     this.controller = {
       right: true,

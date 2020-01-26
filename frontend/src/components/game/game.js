@@ -11,8 +11,7 @@ class Game {
     this.rabbit = new Rabbit({
       width: 20,
       height: 20,
-      pos: [0, 220],
-      vel: [0, 0]
+      pos: [10, 220],
     });
     this.loadedMaps = [
       (new MapFrag(starting_map)),
@@ -59,7 +58,6 @@ class Game {
 
   checkFirstMap() {
     let firstMap = this.loadedMaps[0];
-
     if (firstMap.checkMarkerPosition()) {
       this.loadedMaps.shift();
       this.loadedMaps.push(this.nextMaps.shift());

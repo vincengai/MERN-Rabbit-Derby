@@ -30,28 +30,6 @@ class RabbitDerby extends React.Component {
     //   window.requestAnimationFrame(loop);
     // }
 
-    // const controller = {
-    //   right: true,
-    //   up: false,
-    //   shift: false,
-    //   left: true,
-
-    //   keyListener: function(event) {
-    //     var key_state = event.type == "keydown" ? true : false;
-
-    //     switch (event.keyCode) {
-    //       case 32: // up key
-    //         controller.up = key_state;
-    //         break;
-    //       case 39: // right key
-    //         controller.right = key_state;
-    //         break;
-    //       case 16: // shift key
-    //         controller.shift = key_state;
-    //     }
-    //   }
-    // };
-
     // const loop = function() {
     //   frameCount++;
     //   if (frameCount < 3) {
@@ -60,11 +38,11 @@ class RabbitDerby extends React.Component {
     //   }
     //   frameCount = 0;
 
-    //   // JUMP FUNCTION
-    //   if (controller.up && rabbit.jumping == false) {
-    //     rabbit.yVelocity -= 30; // -20 To send the object Up
-    //     rabbit.jumping = true; // So the object cant jump again
-    //   }
+    // JUMP FUNCTION
+    // if (this.controller.up && this.game.rabbit.jumping == false) {
+    //   this.game.rabbit.yVelocity -= 30; // -20 To send the object Up
+    //   this.game.rabbit.jumping = true; // So the object cant jump again
+    // }
 
     //   // MOVING RIGHT FUNCTION
     //   if (controller.right || !controller.right) {
@@ -112,8 +90,7 @@ class RabbitDerby extends React.Component {
 
       // call update when the browser is ready to draw again
       // window.requestAnimationFrame(loop);
-      // window.addEventListener("keydown", controller.keyListener);
-      // window.addEventListener("keyup", controller.keyListener);
+      
     };
 
     // window.requestAnimationFrame(loop);

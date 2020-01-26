@@ -58,9 +58,9 @@ class Rabbit {
     if (this.controller.up && !this.jumping) {
       this.jumping = true;
       this.controller.up = false;
-      this.vel[1] -= 10;
+      this.vel[1] -= 7.5;
     } else if (this.jumping) {
-      this.vel[1] += 0.5;
+      this.vel[1] += 0.25;
     }
     
     let [x, y] = this.pos;

@@ -36,6 +36,9 @@ class NavBar extends React.Component {
       //   { this.getLinks() }
       // </div>
       <div>
+        <div className="title">
+          <h1>BUNNY DERBY</h1>
+        </div>
         <div className="header">
       {
         this.props.loggedIn ? (

@@ -1,0 +1,10 @@
+.game{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 10px solid var(--red);
+  border-radius: 8px;
+}

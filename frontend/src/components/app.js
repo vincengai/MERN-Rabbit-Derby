@@ -22,9 +22,9 @@ const App = () => {
       <Switch>
 
         <Route path='/highscores/all' component={AllHighscoreContainer} />
-        <Route path='/highscores/user' component={UserHighscoreContainer} />
-        <ProtectedRoute exact path="/rabbitderby" component={ RabbitDerby } />
-        <AuthRoute exact path="/" component={ MainPage } />
+        <ProtectedRoute path='/highscores/user' component={UserHighscoreContainer} />
+        <Route exact path="/rabbitderby" component={ RabbitDerby } />
+        <Route path="/" component={ MainPage } />
       </Switch>
     </div>
   );

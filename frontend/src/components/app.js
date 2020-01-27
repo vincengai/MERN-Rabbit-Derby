@@ -9,6 +9,7 @@ import SignupFormContainer from "./session/signup_form_container";
 import Modal from './modal/modal';
 import RabbitDerby from "./rabbitderby/rabbit_derby";
 import Footer from './footer/footer';
+import HighScore from './highscore/highscore';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <NavBarContainer />
       </header>
       <Switch>
+        {/* <Route exact path="/" component={ HighScore } /> */}
         <Route exact path="/" component={ RabbitDerby } />
         {/* <Route exact path="/" component={ MainPage } /> */}
       </Switch>

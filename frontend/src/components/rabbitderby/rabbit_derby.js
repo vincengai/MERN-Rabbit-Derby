@@ -98,8 +98,11 @@ class RabbitDerby extends React.Component {
 
   render() {
     return (
+      <div className="game">
+
       <canvas ref="canvas" width={ 640 } height={ 360 }>
       </canvas>
+      </div>
     );
   }
 };

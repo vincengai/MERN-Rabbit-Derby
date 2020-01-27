@@ -1,45 +1,43 @@
-const express = require("express");
-const app = express();
-const db = require("./config/keys").mongoURI;
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const passport = require("passport");
+<!DOCTYPE html>
+<html lang="en">
 
-const users = require("./routes/api/users");
-const highscores = require('./routes/api/highscores');
-const usermaps = require('./routes/api/usermaps');
+<head>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+  <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
 
-const path = require("path");
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+  <title>React App</title>
+</head>
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("frontend/public"));
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "public", "index.html"));
-  });
-}
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
+  <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
 
-mongoose
-  .connect(db, { useNewUrlParser: true })
-  .then(() => console.log("Connected to MongoDB successfully"))
-  .catch(err => console.log(err));
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
 
-// app.get("/", (req, res) => {
-//     // debugger;
-//     res.send("Hello World!");
-// });
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+</body>
 
-app.use(passport.initialize());
-require("./config/passport")(passport);
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-// app.use(express.static('stylesheets'));
-app.use(express.static(__dirname + '/stylesheets'));
-
-
-app.use("/api/users", users);
-app.use('/api/highscores', highscores);
-app.use('/api/usermaps', usermaps);
-
-const port = process.env.PORT || 5000;
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+</html>

@@ -8,26 +8,7 @@ const STARTING_MAP = {
     vel: [-1, 0],
     type: "background"
   },
-  obstacles: [
-    {
-      width: 25,
-      height: 50,
-      color: "https://i.imgur.com/WgJtDjI.png",
-      // color: "../assets/Tiles/hill_small.png",
-      pos: [320, 200],
-      vel: [-1, 0],
-      type: "image"
-    },
-    {
-      width: 25,
-      height: 50,
-      color: "https://i.imgur.com/WgJtDjI.png",
-      // color: "../assets/Tiles/hill_small.png",
-      pos: [400, 195],
-      vel: [-1, 0],
-      type: "image"
-    }
-  ],
+  obstacles: [],
   marker: {
     width: 10,
     height: 10,
@@ -35,6 +16,14 @@ const STARTING_MAP = {
     pos: [640, 10],
     vel: [-1, 0],
     type: 'marker'
+  },
+  floor: {
+    width: 640,
+    height: 110,
+    color: `#C4EDF0`,
+    pos: [0, 250],
+    vel: [-1, 0],
+    type: "floor"
   }
 };
 

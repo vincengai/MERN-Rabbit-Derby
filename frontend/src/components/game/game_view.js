@@ -1,7 +1,7 @@
 import Game from "./game";
 
 class GameView {
-  constructor(ctx) {
+  constructor(ctx, mapIDs = []) {
     this.controller = {
       right: true,
       up: false,
@@ -23,7 +23,7 @@ class GameView {
         }
       }
     };
-    this.game = new Game(this.controller);
+    this.game = new Game(mapIDs, this.controller);
     this.ctx = ctx;
     window.addEventListener("keydown", this.controller.keyListener.bind(this));
     window.addEventListener("keyup", this.controller.keyListener.bind(this));
@@ -31,17 +31,21 @@ class GameView {
 
   start() {
     this.game.draw(this.ctx);
-    requestAnimationFrame(this.animate.bind(this));
+    this.animation = requestAnimationFrame(this.animate.bind(this));
   }
 
   animate() {
     this.game.step();
     this.game.draw(this.ctx);
-    requestAnimationFrame(this.animate.bind(this));
+    // if (this.game.checkCollisions()) {
+      // this.stop();
+    // } else {
+      requestAnimationFrame(this.animate.bind(this));
+    // }
   }
 
   stop() {
-
+    // cancelAnimationFrame(this.animation);
   }
 }
 

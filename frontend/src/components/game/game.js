@@ -12,7 +12,7 @@ class Game {
     this.rabbit = new Rabbit({
       width: 20,
       height: 20,
-      pos: [10, 220],
+      pos: [100, 220],
       controller: controller
     });
     this.loadedMaps = [

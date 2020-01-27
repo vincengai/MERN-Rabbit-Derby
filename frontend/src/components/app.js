@@ -24,7 +24,7 @@ const App = () => {
         <Route path='/highscores/all' component={AllHighscoreContainer} />
         <ProtectedRoute path='/highscores/user' component={UserHighscoreContainer} />
         <Route exact path="/rabbitderby" component={ RabbitDerby } />
-        {/* <Route path="/" component={ MainPage } /> */}
+        <Route path="/" component={ MainPage } />
       </Switch>
       <footer className="footer">
         <Footer />

@@ -15,7 +15,9 @@ class Highscore extends React.Component {
     }
 
     render() {
-        return null;
+        return (
+            <h1>Highscores</h1>
+        );
     }
 }
 

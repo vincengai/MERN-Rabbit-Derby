@@ -4,6 +4,8 @@ class TerrainObject {
     if (this.type == 'image' || this.type == 'background') {
       this.image = new Image();
       this.image.src = options.color;
+    } else {
+      this.color = options.color;
     }
     this.width = options.width;
     this.height = options.height;
@@ -29,7 +31,8 @@ class TerrainObject {
         );
       }
     } else {
-      ctx.fillstyle = this.color;
+      ctx.fillStyle = this.color;
+      ctx.strokeStyle = this.color
       ctx.fillRect(
         x,
         y,
@@ -43,11 +46,11 @@ class TerrainObject {
     let [x, y] = this.pos;
     let [dx, dy] = this.vel;
 
-    if (this.type == "background") {
-        if (x == -(this.width)) {
-            x = 0;
-        }
-    }
+    // if (this.type == "background") {
+    //     if (x == -(this.width)) {
+    //         x = 0;
+    //     }
+    // }
 
     let newPos = [x + dx, y + dy];
     this.pos = newPos;

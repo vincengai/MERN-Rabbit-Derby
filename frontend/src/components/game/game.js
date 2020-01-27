@@ -1,11 +1,12 @@
 import Rabbit from "./rabbit";
 import MapFrag from "./mapfrag";
-import map1 from "./mapfrag/map1";
-import map2 from "./mapfrag/map2";
+import MAPS from "./mapfrag/maps";
+// import map1 from "./mapfrag/map1";
+// import map2 from "./mapfrag/map2";
 import starting_map from "./mapfrag/starting_map";
 
 class Game {
-  constructor(controller) {
+  constructor(mapIDs, controller) {
     this.dimX = 640;
     this.dimY = 360;
     this.rabbit = new Rabbit({
@@ -15,14 +16,25 @@ class Game {
       controller: controller
     });
     this.loadedMaps = [
-      (new MapFrag(starting_map)),
-      (new MapFrag(map1))
+      (new MapFrag(starting_map))
     ];
-    this.nextMaps = [
-      new MapFrag(map2),
-      new MapFrag(map1),
-      new MapFrag(map2)
-    ];
+    this.nextMaps = [];
+    this.playerMaps = mapIDs;
+    this.startGameLoadingMaps();
+  }
+
+  startGameLoadingMaps() {
+    if (this.playerMaps.length === 0) {
+      this.loadedMaps.push(new MapFrag(MAPS["MAP1"]));
+      this.generateNextMap();
+      this.generateNextMap();
+    } else {
+      for (let i = 0; i < this.playerMaps.length; i++) {
+        let mapID = this.playerMaps[i];
+        this.nextMaps.push(new MapFrag(MAPS[`MAP${mapID}`]));
+      }
+      this.loadedMaps.push(this.nextMaps.shift());
+    }
   }
 
   draw(ctx) {
@@ -44,15 +56,11 @@ class Game {
   }
 
   checkCollisions() {
-    if (this.rabbit.pos[0] > this.loadedMaps[0].marker.pos[0]) {
-      this.loadedMaps.shift();
-      this.loadedMaps.push(this.nextMaps.shift());
-    }
-
     let firstMap = this.loadedMaps[0];
+    let obstacles = firstMap.obstacles;
 
-    for (let i = 0; i < firstMap.obstacles.length; i++) {
-      let obstacle = firstMap.obstacles[i];
+    for (let i = 0; i < obstacles.length; i++) {
+      let obstacle = obstacles[i];
 
       if (obstacle.isCollidedWith(this.rabbit)) {
         console.log('rabbit hit');
@@ -66,8 +74,16 @@ class Game {
     let firstMap = this.loadedMaps[0];
     if (firstMap.checkMarkerPosition()) {
       this.loadedMaps.shift();
+      if (this.playerMaps.length === 0) {
+        this.generateNextMap();
+      }
       this.loadedMaps.push(this.nextMaps.shift());
     }
+  }
+
+  generateNextMap() {
+    let randMapID = Math.floor((Math.random() * 4) + 1);
+    this.nextMaps.push(new MapFrag(MAPS[`MAP${randMapID}`]));
   }
 
   step() {

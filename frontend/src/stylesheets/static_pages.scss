@@ -9,9 +9,38 @@
 body {
   font-family: 'Raleway', sans-serif !important;
   background-color: var(--background) !important;
+  overflow-x: hidden;
 }
 
 h1 {
   font-family: 'Shadows Into Light', cursive;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-content {
+  display: block;
+  width: 100%;
+  min-height: 68px;
+  background-color: var(--lightblue);
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.bottom {
+  display: block;
+  width: 100%;
+  min-height: 36px;
+  background-color: var(--darkblue)
 }
 

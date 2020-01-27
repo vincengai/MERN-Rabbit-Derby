@@ -37,15 +37,15 @@ class GameView {
   animate() {
     this.game.step();
     this.game.draw(this.ctx);
-    // if (this.game.checkCollisions()) {
-      // this.stop();
-    // } else {
+    if (this.game.checkCollisions()) {
+      this.stop();
+    } else {
       requestAnimationFrame(this.animate.bind(this));
-    // }
+    }
   }
 
   stop() {
-    // cancelAnimationFrame(this.animation);
+    cancelAnimationFrame(this.animation);
   }
 }
 

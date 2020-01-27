@@ -11,10 +11,11 @@ import NavBarContainer from "./nav/navbar_container";
 import RabbitDerby from "./rabbitderby/rabbit_derby";
 import AllHighscoreContainer from './highscore/all_highscore_container';
 import UserHighscoreContainer from './highscore/user_highscore_container';
+import Footer from './footer/footer';
 
 const App = () => {
   return (
-    <div>
+    <div className="content">
       <header>
         <Modal />
         <NavBarContainer />
@@ -26,6 +27,9 @@ const App = () => {
         <Route exact path="/rabbitderby" component={ RabbitDerby } />
         <Route path="/" component={ MainPage } />
       </Switch>
+      <footer className="footer">
+        <Footer />
+      </footer>
     </div>
   );
 };

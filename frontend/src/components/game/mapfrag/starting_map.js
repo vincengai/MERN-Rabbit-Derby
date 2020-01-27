@@ -12,7 +12,7 @@ const STARTING_MAP = {
   marker: {
     width: 10,
     height: 10,
-    color: '#000000',
+    color: "rgba(0, 0, 0, 0.0)",
     pos: [640, 10],
     vel: [-1, 0],
     type: 'marker'

@@ -63,7 +63,7 @@ class Game {
       let obstacle = obstacles[i];
 
       if (obstacle.isCollidedWith(this.rabbit)) {
-        console.log('rabbit hit');
+        // console.log('rabbit hit');
         return true;
       }
     }

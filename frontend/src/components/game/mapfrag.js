@@ -19,7 +19,7 @@ class MapFrag {
   draw(ctx) {
     this.background.draw(ctx);
     this.floor.draw(ctx);
-    this.marker.draw(ctx);
+    // this.marker.draw(ctx);
 
     for (let idx = 0; idx < this.obstacles.length; idx++) {
       const ele = this.obstacles[idx];
